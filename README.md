@@ -1,92 +1,120 @@
-# flutter_restart_app
+# Flutter Restart App
 
-A new Flutter FFI plugin project.
+[![pub package](https://img.shields.io/pub/v/flutter_restart_app.svg)](https://pub.dev/packages/flutter_restart_app)
+[![License: Proprietary](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 
-## Getting Started
+Seamlessly restart your Flutter desktop applications with a single line of code.
 
-This project is a starting point for a Flutter
-[FFI plugin](https://docs.flutter.dev/development/platform-integration/c-interop),
-a specialized package that includes native code directly invoked with Dart FFI.
+![Flutter Restart App Demo](https://path.to/your/demo.gif)
 
-## Project structure
+## 🚀 Features
 
-This template uses the following structure:
+- 🔄 Instant app restart
+- ⏱️ Scheduled restarts
+- 🖥️ Desktop platform support (macOS, Windows*, Linux*)
 
-* `src`: Contains the native source code, and a CmakeFile.txt file for building
-  that source code into a dynamic library.
+*Note: Windows and Linux support is experimental and needs further testing.
 
-* `lib`: Contains the Dart code that defines the API of the plugin, and which
-  calls into the native code using `dart:ffi`.
+## 🛠️ Installation
 
-* platform folders (`android`, `ios`, `windows`, etc.): Contains the build files
-  for building and bundling the native code library with the platform application.
-
-## Building and bundling native code
-
-The `pubspec.yaml` specifies FFI plugins as follows:
+Add `flutter_restart_app` to your `pubspec.yaml`:
 
 ```yaml
-  plugin:
-    platforms:
-      some_platform:
-        ffiPlugin: true
+dependencies:
+  flutter_restart_app: ^0.1.0
 ```
 
-This configuration invokes the native build for the various target platforms
-and bundles the binaries in Flutter applications using these FFI plugins.
+Then run:
 
-This can be combined with dartPluginClass, such as when FFI is used for the
-implementation of one platform in a federated plugin:
-
-```yaml
-  plugin:
-    implements: some_other_plugin
-    platforms:
-      some_platform:
-        dartPluginClass: SomeClass
-        ffiPlugin: true
+```bash
+flutter pub get
 ```
 
-A plugin can have both FFI and method channels:
+## 🔧 Usage
 
-```yaml
-  plugin:
-    platforms:
-      some_platform:
-        pluginClass: SomeName
-        ffiPlugin: true
+### Import the package
+
+```dart
+import 'package:flutter_restart_app/flutter_restart_app.dart';
 ```
 
-The native build systems that are invoked by FFI (and method channel) plugins are:
+### Restart immediately
 
-* For Android: Gradle, which invokes the Android NDK for native builds.
-  * See the documentation in android/build.gradle.
-* For iOS and MacOS: Xcode, via CocoaPods.
-  * See the documentation in ios/flutter_restart_app.podspec.
-  * See the documentation in macos/flutter_restart_app.podspec.
-* For Linux and Windows: CMake.
-  * See the documentation in linux/CMakeLists.txt.
-  * See the documentation in windows/CMakeLists.txt.
+```dart
+await FlutterRestartApp.instance.now();
+```
 
-## Binding to native code
+### Schedule a restart
 
-To use the native code, bindings in Dart are needed.
-To avoid writing these by hand, they are generated from the header file
-(`src/flutter_restart_app.h`) by `package:ffigen`.
-Regenerate the bindings by running `dart run ffigen --config ffigen.yaml`.
+```dart
+FlutterRestartApp.instance.scheduleRestart(Duration(seconds: 5));
+```
 
-## Invoking native code
+## 📱 Example
 
-Very short-running native functions can be directly invoked from any isolate.
-For example, see `sum` in `lib/flutter_restart_app.dart`.
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_restart_app/flutter_restart_app.dart';
 
-Longer-running functions should be invoked on a helper isolate to avoid
-dropping frames in Flutter applications.
-For example, see `sumAsync` in `lib/flutter_restart_app.dart`.
+void main() => runApp(MyApp());
 
-## Flutter help
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Flutter Restart App Demo')),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () => FlutterRestartApp.instance.now(),
+                child: Text('Restart Now'),
+              ),
+              ElevatedButton(
+                onPressed: () => FlutterRestartApp.instance.scheduleRestart(Duration(seconds: 5)),
+                child: Text('Restart in 5 seconds'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 💻 Platform Support
 
+| Platform | Support    |
+|----------|------------|
+| macOS    | ✅ Stable   |
+| Windows  | 🧪 Experimental |
+| Linux    | 🧪 Experimental |
+
+## 🤝 Contributing
+
+We welcome contributions to improve Flutter Restart App, especially for Windows and Linux support. If you encounter any issues or have suggestions, please open an issue on our [GitHub repository](https://github.com/klarity-app/flutter_restart_app).
+
+To contribute:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+Please note that all contributions are subject to review and approval by the Klarity team.
+
+## 📄 License
+
+This project is proprietary software owned by Klarity. All rights reserved. See the [LICENSE](LICENSE) file for details.
+
+## 📬 Contact
+
+For any inquiries or support, please contact us at info@klarity.app
+
+---
+
+Made with ❤️ by [Klarity](https://www.klarity.app)
