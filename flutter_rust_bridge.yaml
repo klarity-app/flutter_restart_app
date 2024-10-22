@@ -2,3 +2,4 @@ rust_input: crate::api
 rust_root: rust/
 web: false
 dart_output: lib/src/generated
+enable_lifetime: true

@@ -1,6 +1,6 @@
 name: flutter_restart_app
 description: "A Flutter plugin that restarts the app at the OS level, providing a seamless way to refresh the application state."
-version: 0.0.1
+version: 0.0.2
 homepage: https://www.klarity.app
 
 environment:
