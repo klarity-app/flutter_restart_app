@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 A Flutter plugin that provides functionality to restart desktop applications seamlessly.
 Supports immediate and scheduled restarts for macOS.
                        DESC
-  s.homepage         = 'https://www.klarity.app'
+  s.homepage         = 'https://github.com/klarity-app/flutter_restart_app'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Klarity' => 'info@klarity.app' }
 
