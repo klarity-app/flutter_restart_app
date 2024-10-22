@@ -5,11 +5,12 @@
 Pod::Spec.new do |s|
   s.name             = 'flutter_restart_app'
   s.version          = '0.0.1'
-  s.summary          = 'A new Flutter FFI plugin project.'
+  s.summary          = 'A Flutter plugin for restarting desktop applications.'
   s.description      = <<-DESC
-A new Flutter FFI plugin project.
+A Flutter plugin that provides functionality to restart desktop applications seamlessly.
+Supports immediate and scheduled restarts for macOS.
                        DESC
-  s.homepage         = 'https://www.klarity.app'
+  s.homepage         = 'https://github.com/klarity-app/flutter_restart_app'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Klarity' => 'info@klarity.app' }
 
