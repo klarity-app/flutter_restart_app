@@ -207,8 +207,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "flutter_restart_app"
+version = "0.1.0"
+dependencies = [
+ "flutter_rust_bridge",
+]
+
+[[package]]
 name = "flutter_rust_bridge"
 version = "2.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f13c1e57b460f7adbd6cbf8b4cd0a1d14238ed64f5cc2a6c2ccb7a605ac01354"
 dependencies = [
  "allo-isolate",
  "android_logger",
@@ -235,6 +244,8 @@ dependencies = [
 [[package]]
 name = "flutter_rust_bridge_macros"
 version = "2.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "16c85e62d6d34f5c1590af004ccd3dc45b1c726dba6721b632b164c19894fab4"
 dependencies = [
  "hex",
  "md-5",
@@ -506,13 +517,6 @@ name = "regex-syntax"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c08c74e62047bb2de4ff487b251e4a92e24f48745648451635cec7d591162d9f"
-
-[[package]]
-name = "flutter_restart_app"
-version = "0.1.0"
-dependencies = [
- "flutter_rust_bridge",
-]
 
 [[package]]
 name = "rustc-demangle"

@@ -1,7 +1,7 @@
 name: flutter_restart_app
-description: "A new Flutter FFI plugin project."
+description: "A Flutter plugin that restarts the app at the OS level, providing a seamless way to refresh the application state."
 version: 0.0.1
-homepage:
+homepage: https://www.klarity.app
 
 environment:
   sdk: '>=3.4.1 <4.0.0'
@@ -41,10 +41,6 @@ flutter:
   # Please refer to README.md for a detailed explanation.
   plugin:
     platforms:
-      android:
-        ffiPlugin: true
-      ios:
-        ffiPlugin: true
       linux:
         ffiPlugin: true
       macos:
